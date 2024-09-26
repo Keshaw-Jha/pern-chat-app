@@ -1,0 +1,22 @@
+import express, { json } from "express";
+// import authRoutes from "@./routes/auth.route.ts";
+import authRoutes from "./routes/authRoute.js";
+import cookieParser from "cookie-parser";
+
+import messageRoutes from "./routes/messageRoute.js";
+
+const app = express();
+
+app.use(json()); // for parsing the json data
+app.use(cookieParser());
+
+app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Welcome to backend 2");
+});
+
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
+});
