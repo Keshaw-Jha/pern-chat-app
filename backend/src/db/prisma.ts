@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { log } from "console";
+import { query } from "express";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ log: ["query", "error"] });
 
 export default prisma;
