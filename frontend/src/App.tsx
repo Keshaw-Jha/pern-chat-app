@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/Login";
 import useAuthContext from "./hooks/useAuthContext";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { authUser, isLoading } = useAuthContext();
@@ -31,6 +32,7 @@ function App() {
   return (
     <div className="p-4 h-screen flex items-center justify-center">
       <RouterProvider router={router} />
+      <Toaster />
     </div>
   );
 }

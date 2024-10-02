@@ -70,7 +70,7 @@ export const logIn = async (req: Request, res: Response) => {
     const isPasswordCorrect = await bcryptjs.compare(password, user.password);
 
     if (!isPasswordCorrect) {
-      res.status(400).json({ error: "Invalid Credentials" });
+      return res.status(400).json({ error: "Invalid Credentials" });
     }
 
     generateToken(user.id, res);
