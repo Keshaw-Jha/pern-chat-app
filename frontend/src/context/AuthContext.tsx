@@ -16,17 +16,19 @@ type AuthUserType = {
   gender: string;
 };
 
-export const AuthContext = createContext<{
+export interface AuthContext {
   authUser: AuthUserType | null;
   setAuthUser: Dispatch<SetStateAction<AuthUserType | null>>;
   isLoading: boolean;
-}>({
+}
+
+export const AuthContext = createContext<AuthContext | undefined>({
   authUser: null,
   setAuthUser: () => {},
   isLoading: true,
 });
 
-export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [authUser, setAuthUser] = useState<AuthUserType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -60,3 +62,5 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     </AuthContext.Provider>
   );
 };
+
+export default AuthContextProvider;

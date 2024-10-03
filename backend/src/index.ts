@@ -2,10 +2,9 @@ import express, { json } from "express";
 // import authRoutes from "@./routes/auth.route.ts";
 import authRoutes from "./routes/authRoute.js";
 import cookieParser from "cookie-parser";
-
+import { app, server } from "./socket/socket.js";
 import messageRoutes from "./routes/messageRoute.js";
 
-const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(json()); // for parsing the json data
@@ -18,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to backend 2");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
